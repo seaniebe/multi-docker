@@ -6,7 +6,7 @@ before_install:
   - docker build -t seaniebe/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run seaniebe/react-test npm test -- --coverage
+  - docker run -e CI=true seaniebe/react-test npm test -- --coverage
 
 after_success:
   - docker build -t seaniebe/multi-client ./client
@@ -14,7 +14,7 @@ after_success:
   - docker build -t seaniebe/multi-server ./server
   - docker build -t seaniebe/multi-worker ./worker
   # Log In to the docker CLI
-  - echo "$DOCKER_PASWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo $DOCKER_PASWORD | docker login -u $DOCKER_ID --password-stdin
   # Take images and push to dockerhub
   - docker push seaniebe/multi-client
   - docker push seaniebe/multi-nginx
