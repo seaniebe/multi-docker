@@ -15,7 +15,7 @@ after_success:
   - docker build -t seaniebe/multi-worker ./worker
   # Log In to the docker CLI testing 123
   # echo $(DOCKER_PASWORD) | docker login -u $(DOCKER_ID) --password-stdin
-  docker login -u $(DOCKER_ID) -p $(DOCKER_PASWORD)
+  - docker login -u $(DOCKER_ID) -p $(DOCKER_PASWORD)
   # Take images and push to dockerhub 
   - docker push seaniebe/multi-client
   - docker push seaniebe/multi-nginx
