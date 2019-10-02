@@ -10,7 +10,7 @@ script:
 
 after_success:
   - docker build -t seaniebe/multi-client ./client
-  - docker build -t seaniebe/multi-ngnix ./nginx
+  - docker build -t seaniebe/multi-nginx ./nginx
   - docker build -t seaniebe/multi-server ./server
   - docker build -t seaniebe/multi-worker ./worker
   # Log In to the docker CLI
